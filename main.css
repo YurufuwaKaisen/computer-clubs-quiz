@@ -1,0 +1,110 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    text-align: center;
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+
+.question {
+    margin: 10px;
+    background-color: white;
+    border: solid;
+    border-radius: 5px;
+    border-color: yellow;
+}
+
+.question_inside {
+    margin: 10px;
+}
+
+input[type="checkbox"] {
+    border-radius: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+input[type="checkbox"] {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    border: 4px solid black;
+    border-radius: 10px;
+    vertical-align: -5px;
+    pointer-events: none;
+}
+
+input[type="checkbox"]:checked:before {
+    position: absolute;
+    top: 0px;
+    left: 6px;
+    transform: rotate(50deg);
+    width: 8px;
+    height: 16px;
+    border-right: 4px solid #000;
+    border-bottom: 4px solid #000;
+    content: '';
+    
+}
+.selection{
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+}
+header {
+    padding: 0;
+    background-color: #1986CE;
+    position: sticky;
+    top: 0;
+}
+.ctrl{
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px;
+}
+.ctrl button{
+    font-size:1.3rem;
+    font-weight: 10;
+    height: 2rem;
+    width: 4rem;
+    border: none;
+    background-color: lightgreen;
+    border-radius: 5px
+}
+
+.mame_back{
+ position: absolute;
+ top:0;
+ background-color: rgba(0, 0, 0, 0.7);
+ height: 100%;
+ width: 100%;
+ display: flex;
+ justify-content: center;
+    align-items: center;
+}
+
+.mame_zone{
+    height: 50%;
+    width: 50%;
+    padding: 20px;
+    background-color: azure;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.mame_zone .maru{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 4px solid red;
+}
