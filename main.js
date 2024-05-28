@@ -2,6 +2,11 @@ var access_id
 var answer_id
 var problems
 var problem_id = 0
+var is_corrected = []
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 function show_problem(data) {
     document.querySelector(".ctrl > button").style.disabled = true
@@ -12,8 +17,29 @@ function show_problem(data) {
     document.querySelector("#selection_3").innerHTML = '<input type="checkbox"> ' + data.choice_3
     document.querySelector("#selection_4").innerHTML = '<input type="checkbox"> ' + data.choice_4
 }
+async function show_result(){
+    document.querySelector(".question").remove()
+    let answers_node = document.querySelector(".answers")
+    document.querySelector(".result_screen").style.display = "block"
+    
+    for(let i= 0;i <= is_corrected.length;i++){
+        await sleep(400)
+        console.log(i)
+        let node = document.createElement("h1")
+        if(is_corrected[i]){
+            node.innerHTML = "第"+i+"問<br>正解!"
+        }else{
+            node.innerHTML = "第"+i+"問<br>不正解"
+        }
+        answers_node.appendChild(node)
+        
+    }
+}
 
 window.onload = async () => {
+    document.querySelector("#start_button").onclick = async () => {
+        document.querySelector(".welcome_screen").style.display = "none"
+    }
     var base_url = "https://script.google.com/macros/s/AKfycbw59LIHrNa250YlkhykC3eFuy17rQFh9lP5xBhadjfolzjnO0pMbiT2w3td7xU9lsoR/exec"
 
     const response = await fetch(base_url)
@@ -51,9 +77,9 @@ window.onload = async () => {
         document.querySelector("body > div.mame_back").style.display = "flex"
 
         const params = {
-            "question_id": problem_id,
-            "answer_id": answer_id,
-            "access_id": access_id
+            "question_id": Number(problem_id),
+            "answer_id": Number(answer_id),
+            "access_id": Number(access_id)
         }
         const query_params = new URLSearchParams(params)
 
@@ -75,10 +101,12 @@ window.onload = async () => {
             document.querySelector("#maru").style.display = "block"
             document.querySelector("#answer-judge").innerHTML = "正解"
             document.querySelector("#correct-rate").innerHTML = "正答率: " + String(res_json.answer_rate) + "%"
+            is_corrected.push(true)
         } else {
             document.querySelector("#batu").style.display = "block"
             document.querySelector("#answer-judge").innerHTML = "不正解"
             document.querySelector("#correct-rate").innerHTML = "あなたと同じ回答をした割合: " + String(res_json.same_rate) + "%"
+            is_corrected.push(false)
         }
 
 
@@ -94,7 +122,7 @@ window.onload = async () => {
         if(problems.length > problem_id){
             show_problem(problems[problem_id])
         }else{
-            // show_result()
+            show_result()
         }
 
         document.querySelector("#batu").style.display = "none"

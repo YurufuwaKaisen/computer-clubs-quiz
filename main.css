@@ -50,27 +50,31 @@ input[type="checkbox"]:checked:before {
     border-right: 4px solid #000;
     border-bottom: 4px solid #000;
     content: '';
-    
+
 }
-.selection{
+
+.selection {
     display: flex;
     align-items: center;
     background-color: transparent;
     border: none;
 }
+
 header {
     padding: 0;
     background-color: #1986CE;
     position: sticky;
     top: 0;
 }
-.ctrl{
+
+.ctrl {
     display: flex;
     justify-content: flex-end;
     margin: 10px;
 }
-.ctrl button{
-    font-size:1.3rem;
+
+.ctrl button {
+    font-size: 1.3rem;
     font-weight: 10;
     height: 2rem;
     width: 4rem;
@@ -79,18 +83,18 @@ header {
     border-radius: 5px
 }
 
-.mame_back{
- position: absolute;
- top:0;
- background-color: rgba(0, 0, 0, 0.7);
- height: 100%;
- width: 100%;
- display: flex;
- justify-content: center;
+.mame_back {
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
-.mame_zone{
+.mame_zone {
     height: 50%;
     width: 50%;
     padding: 20px;
@@ -102,9 +106,75 @@ header {
     flex-direction: column;
 
 }
-.mame_zone .maru{
+
+.mame_zone .maru {
     height: 50px;
     width: 50px;
     border-radius: 50%;
     border: 4px solid red;
+}
+
+.welcome_screen {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #1986CE;
+    z-index: 1000;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.welcome_start {
+    border-radius: 50px;
+    height: 100px;
+    width: 100px;
+    color: white;
+    border-color: #0c6199;
+    background-color: #1986CE;
+}
+
+.welcome_screen>h1 {
+    opacity: 0;
+    position: relative;
+    animation: 1s popup_and_fade_in 0s ease-out forwards;
+}
+
+.welcome_screen>p {
+    opacity: 0;
+    animation: 1s fade_in 1s ease-out forwards;
+}
+
+@keyframes popup_and_fade_in {
+    from {
+        top: -20px;
+        opacity: 0;
+    }
+
+    to {
+        top: 0px;
+        opacity: 1;
+    }
+}
+
+@keyframes fade_in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.answers {
+    display: flex;
+    margin-left: 10;
+    text-align: center;
 }
