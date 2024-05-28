@@ -9,6 +9,7 @@ body {
     color: white;
     padding: 0;
     margin: 0;
+    font-size: 2.5rem;
 }
 
 .question {
@@ -17,6 +18,7 @@ body {
     border: solid;
     border-radius: 5px;
     border-color: yellow;
+    font-size: 2.5rem;
 }
 
 .question_inside {
@@ -58,6 +60,7 @@ input[type="checkbox"]:checked:before {
     align-items: center;
     background-color: transparent;
     border: none;
+    font-size: 2rem;
 }
 
 header {
@@ -80,7 +83,8 @@ header {
     width: 4rem;
     border: none;
     background-color: lightgreen;
-    border-radius: 5px
+    border-radius: 5px;
+    font-size:1.5rem;
 }
 
 .mame_back {
@@ -104,7 +108,7 @@ header {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
+    font-size: 1.5rem;
 }
 
 .mame_zone .maru {
@@ -144,11 +148,13 @@ header {
     opacity: 0;
     position: relative;
     animation: 1s popup_and_fade_in 0s ease-out forwards;
+    font-size: 3rem;
 }
 
 .welcome_screen>p {
     opacity: 0;
     animation: 1s fade_in 1s ease-out forwards;
+    font-size: 1.5rem;
 }
 
 @keyframes popup_and_fade_in {
@@ -177,4 +183,8 @@ header {
     display: flex;
     margin-left: 10;
     text-align: center;
+    font-size: 1.2rem;
+}
+.result_screen{
+    font-size: 1.5rem;
 }
