@@ -21,6 +21,7 @@ window.onload = async () => {
     if (!response.ok) {
         // Network is not ok
         alert("問題サーバーに接続できません... あとでもう一度お試しください。")
+        location.reload()
     }
 
     const result = await response.text()
@@ -64,9 +65,12 @@ window.onload = async () => {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         })
-
+        
         var res_txt = await response.text()
         var res_json = JSON.parse(res_txt)
+
+        document.querySelector("#next-button").style.display = "block"
+        
         if (res_json.is_correct) {
             document.querySelector("#maru").style.display = "block"
             document.querySelector("#answer-judge").innerHTML = "正解"
@@ -77,12 +81,22 @@ window.onload = async () => {
             document.querySelector("#correct-rate").innerHTML = "あなたと同じ回答をした割合: " + String(res_json.same_rate) + "%"
         }
 
+
         document.querySelector("#mame_content").innerHTML = problems[problem_id].mame
     }
 
     document.querySelector("body > div.mame_back > div > div.ctrl > button").onclick = () => {
         problem_id += 1
-        show_problem(problems[problem_id])
+        document.querySelector("#next-button").style.display = "none"
+        document.querySelector("#answer-judge").innerHTML = "判定中..."
+        document.querySelector("#correct-rate").innerHTML = "読み込み中"
+        document.querySelector("#mame_content").innerHTML = "TIP: i-Filterは即ブロックしてくる場合とそうでない場合がある"
+        if(problems.length > problem_id){
+            show_problem(problems[problem_id])
+        }else{
+            // show_result()
+        }
+
         document.querySelector("#batu").style.display = "none"
         document.querySelector("#maru").style.display = "none"
         document.querySelector("body > div.mame_back").style.display = "none"
