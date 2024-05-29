@@ -27,13 +27,15 @@ async function show_result(){
         console.log(i)
         let node = document.createElement("h1")
         if(is_corrected[i]){
-            node.innerHTML = "第"+i+"問<br>正解!"
+            node.style.color = "red"
+            node.innerHTML = "第"+(i+1)+"問<br>◎"
         }else{
-            node.innerHTML = "第"+i+"問<br>不正解"
+            node.style.color = "blue"
+            node.innerHTML = "第"+(i+1)+"問<br>×"
         }
-        answers_node.appendChild(node)
-        
+        answers_node.appendChild(node)   
     }
+
 }
 
 window.onload = async () => {
