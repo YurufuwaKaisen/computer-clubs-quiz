@@ -102,12 +102,12 @@ window.onload = async () => {
         if (res_json.is_correct) {
             document.querySelector("#maru").style.display = "block"
             document.querySelector("#answer-judge").innerHTML = "正解"
-            document.querySelector("#correct-rate").innerHTML = "正答率: " + String(res_json.answer_rate) + "%"
+            document.querySelector("#correct-rate").innerHTML = "正答率: " + String(res_json.answer_rate * 100) + "%"
             is_corrected.push(true)
         } else {
             document.querySelector("#batu").style.display = "block"
             document.querySelector("#answer-judge").innerHTML = "不正解"
-            document.querySelector("#correct-rate").innerHTML = "あなたと同じ回答をした割合: " + String(res_json.same_rate) + "%"
+            document.querySelector("#correct-rate").innerHTML = "あなたと同じ回答をした割合: " + String(res_json.same_rate * 100) + "%"
             is_corrected.push(false)
         }
 
